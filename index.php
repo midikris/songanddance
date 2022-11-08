@@ -1,5 +1,8 @@
 <?php 
 //Song and Dance Landing Page
+
+$root_url =  $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -13,9 +16,18 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="preload" href="img/curtain_left.jpg" as="image">
+        <link rel="preload" href="img/curtain_right.jpg" as="image">
+
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
-        
+
+        <meta property="og:title" content="The Song and Dance" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="<?php echo filter_var($root_url, FILTER_SANITIZE_URL); ?>" />
+        <meta property="og:image" content="<?php echo filter_var($root_url, FILTER_SANITIZE_URL) ?>img/1200_630.jpg" />
+        <meta property="og:description" content="The Song and Dance is about music and gifs followed by the comedy that ensues." />
+  
     </head>
     <body>
         <div class="container">
