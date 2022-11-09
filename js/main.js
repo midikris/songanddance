@@ -10,10 +10,11 @@ INSOURCED.app = {
     dance_moves: [
       'https://media.giphy.com/media/2oeyTMKbIZsHK/giphy.gif', //og default dance move
       'https://media.giphy.com/media/3ohjVazBFR12PCzk3e/giphy.gif', //soultrain
-      'https://media1.giphy.com/media/vl8ncD72EnhoA/giphy.gif', //dancing skeletons
-      'https://media3.giphy.com/media/F6ub4AQXz13xK/giphy.gif', //dancing skeletons
+      'https://media.giphy.com/media/vl8ncD72EnhoA/giphy.gif', //dancing skeletons
+      'https://media.giphy.com/media/F6ub4AQXz13xK/giphy.gif', //dancing skeletons
+      'https://media.giphy.com/media/l4Ep3mmmj7Bw3adWw/giphy.gif', //soul train
       'https://media.giphy.com/media/l378uHisF00ugOA36/giphy.gif', //napoleon dynamite
-      'https://media3.giphy.com/media/8NaEXnwY0vXoY/giphy.gif', //white people dancing
+      'https://media.giphy.com/media/8NaEXnwY0vXoY/giphy.gif', //white people dancing
       'https://media.giphy.com/media/6yG6GvvcN1Gr6/giphy.gif', //old people dancing
       'https://media.giphy.com/media/11KrDRpNFYlG6I/giphy.gif', //treadmill dancing
       'https://media.giphy.com/media/L0snCScL0LMBor5sE0/giphy.gif', //bugs bunny
@@ -21,6 +22,9 @@ INSOURCED.app = {
       'https://media.giphy.com/media/KMuecXG7bC5dC/giphy.gif', //jay and silent bob
       'https://media.giphy.com/media/Um27tTsg0mSdO/giphy.gif', //borat
       'https://media.giphy.com/media/skJX0TcFaaPew/giphy-downsized-large.gif', //60's masquerade
+      'https://media.giphy.com/media/p29xnqfmtZzY4/giphy.gif', //joy division
+      'https://media.giphy.com/media/3o85fVVwdqKYpt7F3G/giphy.gif', //break dancing
+
     ],
     music_videos: [
       { 'video': 'https://www.youtube.com/watch?v=fuKDBPw8wQA', 'delay': 10.5, 'artist': 'Van Halen' }, //Van Halen - Panama
