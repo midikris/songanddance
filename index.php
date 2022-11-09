@@ -12,6 +12,20 @@ $is_prod_analytics = ($uri_raw === "https://songanddance.heireth.com/") ? true :
 <!DOCTYPE html>
   <html lang="en">
       <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6NYJRJYBBP"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+<?php if($is_prod_analytics) { ?>
+          gtag('config', 'G-6NYJRJYBBP');
+<?php } else { ?>
+          gtag('config', 'G-6NYJRJYBBP',{ 'debug_mode':true });
+<?php } ?>
+        </script>
+        
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,20 +43,7 @@ $is_prod_analytics = ($uri_raw === "https://songanddance.heireth.com/") ? true :
         <meta property="og:url" content="<?php echo filter_var($root_uri, FILTER_SANITIZE_URL); ?>" />
         <meta property="og:image" content="<?php echo filter_var($uri_raw, FILTER_SANITIZE_URL); ?>img/1200_630.jpg" />
         <meta property="og:description" content="The Song and Dance combines music and animated gifs for a good laugh." />
-  
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6NYJRJYBBP"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
 
-<?php if($is_prod_analytics) { ?>
-          gtag('config', 'G-6NYJRJYBBP');
-<?php } else { ?>
-          gtag('config', 'G-6NYJRJYBBP',{ 'debug_mode':true });
-<?php } ?>
-        </script>
     </head>
     <body>
         <div class="container">
