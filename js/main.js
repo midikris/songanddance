@@ -6,6 +6,7 @@ INSOURCED.app = {
     giphy: false,
     curated_videos: true,
     curated_gifs: true,
+    featured_artist: '',
     dance_moves: [
       'https://media.giphy.com/media/2oeyTMKbIZsHK/giphy.gif', //og default dance move
       'https://media.giphy.com/media/3ohjVazBFR12PCzk3e/giphy.gif', //soultrain
@@ -29,14 +30,17 @@ INSOURCED.app = {
       { 'video': 'https://www.youtube.com/watch?v=CcNo07Xp8aQ', 'delay': 8.5, 'artist': 'Robyn' }, //Chaka Khan - I Feel For You
       { 'video': 'https://www.youtube.com/watch?v=OcECxNgDltw', 'delay': 5.75, 'artist': 'New Order' }, //New Order - Bizare Love Triangle
       { 'video': 'https://www.youtube.com/watch?v=PGNiXGX2nLU', 'delay': 15.75, 'artist': 'Dead Or Alive' }, //Dead Or Alive - You Spin Me Round
-      { 'video': 'https://www.youtube.com/watch?v=hTWKbfoikeg', 'delay': 9.5, 'artist': 'Nirvana' }, //Nirvana - Smells Like Teen Spirit
       { 'video': 'https://www.youtube.com/watch?v=djV11Xbc914', 'delay': 20, 'artist': 'A-Ha' }, //A-Ha - Take On Me
+      { 'video': 'https://www.youtube.com/watch?v=xat1GVnl8-k', 'delay': 16.75, 'artist': 'Bloodhound Gang' }, //Bloodhound Gang - The Bad Touch
       { 'video': 'https://www.youtube.com/watch?v=Nm-ISatLDG0', 'delay': 12, 'artist': 'Donna Summer' }, //Donna Summer - I Feel Love
-      { 'video': 'https://www.youtube.com/watch?v=2WN0T-Ee3q4', 'delay': 13, 'artist': 'Lihmal' }, //Lihmal - Neverending Story
       { 'video': 'https://www.youtube.com/watch?v=ysmVlaw36L0', 'delay': 16, 'artist': 'Yazoo' }, //Yazoo - Situation
+      { 'video': 'https://www.youtube.com/watch?v=fcZOBOGMODI', 'delay': 11.5, 'artist': 'Electric Six' }, //Electric Six - Gay Bar   
+      // { 'video': 'https://www.youtube.com/watch?v=QLpArkPb-YU', 'delay': 5, 'artist': '10 Second Timer' }, //10 Second Timer   
     ],
     archived_music_videos: [
-      // { 'video': 'https://www.youtube.com/watch?v=xhud_6AHKfo', 'delay': 5, 'artist': '10 Second Timer' }, //10 Second Timer
+      // { 'video': 'https://www.youtube.com/watch?v=QLpArkPb-YU', 'delay': 5, 'artist': '10 Second Timer' }, //10 Second Timer   
+      // { 'video': 'https://www.youtube.com/watch?v=hTWKbfoikeg', 'delay': 9.5, 'artist': 'Nirvana' }, //Nirvana - Smells Like Teen Spirit
+      // { 'video': 'https://www.youtube.com/watch?v=2WN0T-Ee3q4', 'delay': 13, 'artist': 'Lihmal' }, //Lihmal - Neverending Story
       // { 'video': 'https://www.youtube.com/watch?v=Qh-S78saEnQ', 'delay': 26, 'artist': 'Ampersand' }, //Ampersand - Traction
       // { 'video': 'https://www.youtube.com/watch?v=K17df81RL9Y', 'delay': 42.5, 'artist': 'Aurora' }, //Aurora - Cure For Me
       // { 'video': 'https://www.youtube.com/watch?v=9bZkp7q19f0', 'delay': 18.5, 'artist': 'Psy' }, //Psy - Gangnam Style
@@ -93,7 +97,7 @@ INSOURCED.app = {
         { backgroundColor: "#000", delay: 0.3, duration: 0.5 }
       );
     },
-    songAndDance: (videoId) => {
+    songAndDance: () => {
       let delay = 0;
       //Animate Dancing Man
       dance = gsap.fromTo(
@@ -108,17 +112,18 @@ INSOURCED.app = {
         }
       );
     },
-    onPlayerReady: (event) => {
-      record = gsap.timeline();
-      record = gsap.fromTo('.vinyl-record', { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 1, ease: 'elastic.out(1, 0.3)', delay: 0 });
-      record = gsap.to('.vinyl-record', { display: 'block', rotation: 360, duration: 1.80, repeat: -1, ease: 'none' });
+    spinningRecordPlay: () => {
+      if(typeof vinylRecord === 'undefined') {
+        vinylRecord = gsap.fromTo('.vinyl-record', { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 1, ease: 'elastic.out(1, 0.3)', delay: 0 });
+        vinylRecord = gsap.to('.vinyl-record', { display: 'block', rotation: 360, duration: 1.80, repeat: -1, ease: 'none' });
+      } else {
+        vinylRecord.play();
+      }
     },
-    spinningRecord: (event) => {
-      record = gsap.timeline();
-      record = gsap.to('.vinyl-record', { display: 'none', rotation: 360, duration: 1.80, repeat: -1, ease: 'none' });
-
+    spinningRecordPause: () => {
+      vinylRecord.pause();
     },
-    countdown: (event) => {
+    countdown: () => {
       gsap.fromTo('.wait-for-it', { opacity: 1, fontSize: '10px' }, { opacity: 0, duration: 2, ease: 'power4.out', fontSize: '100px' });
     },
     resetAnimations: function () {
@@ -127,6 +132,7 @@ INSOURCED.app = {
       let rightCurtain = document.querySelector(".right-curtain");
       let h1 = document.querySelector("h1");
       let h2 = document.querySelector("h2");
+
       t1 = gsap.timeline()
       t1 = gsap.to(leftCurtain, {
         duration: 3,
@@ -259,7 +265,6 @@ INSOURCED.app = {
 
       function onPlayerReady() {
         player.playVideo(); //Play the video
-        INSOURCED.app.animations.onPlayerReady(); //
       }
 
       function onPlayerStateChange(event) {
@@ -276,6 +281,9 @@ INSOURCED.app = {
           title = title.replace(/\([^)]*\)/g, ""); //Remove anything in parenthesis
           title = title.replace(/\[[^)]*\]/g, ""); //Remove anything in brackets
           titleElement.innerHTML = title; //Set the title element to the youtube title
+          let modalFeaturedArtistElement = document.querySelector(".modal-body-featured-artist"); //select the modal featured artist element
+          modalFeaturedArtistElement.innerHTML = title; //Set the modal featured artist element to the youtube title
+
         }
 
         let delay = INSOURCED.app.params.delay;
@@ -294,7 +302,7 @@ INSOURCED.app = {
           //listen for the end of the song
           if (status === 0) {
             clearInterval(getCurrentTime);
-            INSOURCED.app.animations.spinningRecord();
+            INSOURCED.app.animations.spinningRecordPause(); //Pause the spinning record animation
             INSOURCED.app.animations.resetAnimations();
           }
 
@@ -355,13 +363,18 @@ INSOURCED.app = {
       let videoId = getID;
 
       //Set videoID as a url parameter for sharing
+      gtag('event', 'click', {
+        'event_category': 'button',
+        'event_label': "Lets Dance",
+      });
       
       INSOURCED.app.animations.introAnimation(); //Animate the intro
       INSOURCED.app.instantiateYoutubePlayer(videoId); //Instantiate the youtube player
+      INSOURCED.app.animations.spinningRecordPlay(); //Start the spinning record animation
       window.history.pushState({}, '', window.location.origin);
 
-      var modalBody = document.querySelector('.modal-body');
-      modalBody.innerHTML = window.location.href + '?v=' + encodeURIComponent(videoId) + '&d=' + encodeURIComponent(INSOURCED.app.params.delay);
+      var modalBodyShareUrl = document.querySelector('.modal-body-share-url');
+      modalBodyShareUrl.innerHTML = window.location.href + '?v=' + encodeURIComponent(videoId) + '&d=' + encodeURIComponent(INSOURCED.app.params.delay);
 
       // on vinyl-record click open modal
       document.querySelector('.vinyl-record').addEventListener('click', function () {

@@ -28,6 +28,15 @@ $root_url =  $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $_SERV
         <meta property="og:image" content="<?php echo filter_var($root_url, FILTER_SANITIZE_URL) ?>img/1200_630.jpg" />
         <meta property="og:description" content="The Song and Dance is about music and gifs followed by the comedy that ensues." />
   
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6NYJRJYBBP"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-6NYJRJYBBP',{ 'debug_mode':true });
+        </script>
     </head>
     <body>
         <div class="container">
@@ -78,7 +87,8 @@ $root_url =  $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $_SERV
                 <h2>Share this Song and Dance</h2>
               </div>
               <div class="modal-body">
-                <p></p>
+                <p class="modal-body-featured-artist"></p>
+                <p class="modal-body-share-url"></p>
               </div>
             </div>
           </div>
