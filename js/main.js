@@ -31,10 +31,13 @@ INSOURCED.app = {
       { 'video': 'https://www.youtube.com/watch?v=OcECxNgDltw', 'delay': 5.75, 'artist': 'New Order' }, //New Order - Bizare Love Triangle
       { 'video': 'https://www.youtube.com/watch?v=PGNiXGX2nLU', 'delay': 15.75, 'artist': 'Dead Or Alive' }, //Dead Or Alive - You Spin Me Round
       { 'video': 'https://www.youtube.com/watch?v=djV11Xbc914', 'delay': 20, 'artist': 'A-Ha' }, //A-Ha - Take On Me
+      { 'video': 'https://www.youtube.com/watch?v=Pwymq-gWhvY', 'delay': 10, 'artist': 'Rob Zombie' }, //Rob Zombie - Dragula
       { 'video': 'https://www.youtube.com/watch?v=xat1GVnl8-k', 'delay': 16.75, 'artist': 'Bloodhound Gang' }, //Bloodhound Gang - The Bad Touch
       { 'video': 'https://www.youtube.com/watch?v=Nm-ISatLDG0', 'delay': 12, 'artist': 'Donna Summer' }, //Donna Summer - I Feel Love
       { 'video': 'https://www.youtube.com/watch?v=ysmVlaw36L0', 'delay': 16, 'artist': 'Yazoo' }, //Yazoo - Situation
+      { 'video': 'https://www.youtube.com/watch?v=-iTQQT4yv94', 'delay': 4, 'artist': 'Manufacture' }, //Manufacture - Armed Forces
       { 'video': 'https://www.youtube.com/watch?v=fcZOBOGMODI', 'delay': 11.5, 'artist': 'Electric Six' }, //Electric Six - Gay Bar   
+      { 'video': 'https://www.youtube.com/watch?v=iTxOKsyZ0Lw', 'delay': 9, 'artist': 'The Chemical Brothers' }, //The Chemical Brothers - Block Rockin' Beats
       // { 'video': 'https://www.youtube.com/watch?v=QLpArkPb-YU', 'delay': 5, 'artist': '10 Second Timer' }, //10 Second Timer   
     ],
     archived_music_videos: [
