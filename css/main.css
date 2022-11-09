@@ -122,6 +122,11 @@ body {
     height: 100%;
     width: 100%;
 }
+.container .modal .modal-body-featured-artist{
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 20px;
+}
 .container h1 {
     position: absolute;
     width: 100%;

@@ -1,20 +1,22 @@
 <?php 
 //Song and Dance Landing Page
-
-$root_url =  $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+$scheme = isset($_SERVER["REQUEST_SCHEME"]) ? filter_var($_SERVER["REQUEST_SCHEME"], FILTER_SANITIZE_URL) : "";
+$host = isset($_SERVER["HTTP_HOST"]) ? filter_var($_SERVER["HTTP_HOST"], FILTER_SANITIZE_URL) : "";
+$uri = isset($_SERVER["REQUEST_URI"]) ? filter_var($_SERVER["REQUEST_URI"], FILTER_SANITIZE_URL) : "";
+$root_uri = $scheme  . "://" . $host . $uri;
+$uri_raw = explode("?", $root_uri);
+$uri_raw = $uri_raw[0];
+$is_prod_analytics = ($uri_raw === "https://songanddance.heireth.com/") ? true : false;
 
 ?>
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!DOCTYPE html>
+  <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>The Song and Dance</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="The Song and Dance combines music and animated gifs for a good laugh.">
 
         <link rel="preload" href="img/curtain_left.jpg" as="image">
         <link rel="preload" href="img/curtain_right.jpg" as="image">
@@ -24,10 +26,23 @@ $root_url =  $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $_SERV
 
         <meta property="og:title" content="The Song and Dance" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="<?php echo filter_var($root_url, FILTER_SANITIZE_URL); ?>" />
-        <meta property="og:image" content="<?php echo filter_var($root_url, FILTER_SANITIZE_URL) ?>img/1200_630.jpg" />
-        <meta property="og:description" content="The Song and Dance is about music and gifs followed by the comedy that ensues." />
+        <meta property="og:url" content="<?php echo filter_var($root_uri, FILTER_SANITIZE_URL); ?>" />
+        <meta property="og:image" content="<?php echo filter_var($uri_raw, FILTER_SANITIZE_URL); ?>img/1200_630.jpg" />
+        <meta property="og:description" content="The Song and Dance combines music and animated gifs for a good laugh." />
   
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6NYJRJYBBP"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+<?php if($is_prod_analytics) { ?>
+          gtag('config', 'G-6NYJRJYBBP');
+<?php } else { ?>
+          gtag('config', 'G-6NYJRJYBBP',{ 'debug_mode':true });
+<?php } ?>
+        </script>
     </head>
     <body>
         <div class="container">
@@ -78,7 +93,8 @@ $root_url =  $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $_SERV
                 <h2>Share this Song and Dance</h2>
               </div>
               <div class="modal-body">
-                <p></p>
+                <p class="modal-body-featured-artist"></p>
+                <p class="modal-body-share-url"></p>
               </div>
             </div>
           </div>
