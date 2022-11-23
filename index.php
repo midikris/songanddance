@@ -103,7 +103,8 @@ $is_prod_analytics = ($uri_raw === "https://songanddance.heireth.com/") ? true :
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/app.min.js"></script>
+        <script src="js/params.js"></script>
 
       </body>
 </html>
